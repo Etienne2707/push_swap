@@ -64,6 +64,8 @@ int main(int ac, char **av)
     t_pile data;
     data.tab = malloc(sizeof(int) * ac); 
     data.max = ac - 2;
+    data.pileB = malloc(sizeof(int) * ac - 2);
+    data.maxB = 0 ;
     if (ac <= 1)
         return(0);
     while (av[i] != 0)
@@ -89,5 +91,11 @@ int main(int ac, char **av)
         return (0);
     if (alsort(&data,ac) == 1)
         return(1);
-    rra(&data);
+  //  printall(&data);
+    pa(&data);
+    pa(&data);
+    pa(&data);
+    rrb(&data);
+    pb(&data);
+    printall(&data);
 }

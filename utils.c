@@ -15,3 +15,24 @@ int alsort(t_pile *data, int ac)
     printf("Deja trier ");
     return (1);
 }
+
+int printall(t_pile *data)
+{
+    int i;
+    int u;
+
+    i = 0;
+    u = 0;
+    while (i <= data->max)
+    {
+        printf("pileA[%d]%d\n", i, data->tab[i]);
+        i++;
+    }
+    printf("-------------------------------------------------------------------------------\n");
+    while (u <= data->maxB)
+    {
+        printf("pileB[%d]%d\n", u, data->pileB[u]);
+        u++;
+    }
+    return 1;
+}

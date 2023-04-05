@@ -14,6 +14,7 @@ typedef	struct s_pile
 	int max;
 	int *pileA;
 	int *pileB;
+	int maxB;
 }   t_pile;
 
 int	ft_atoi(const char *str);
@@ -23,5 +24,12 @@ int alsort(t_pile *data, int ac);
 int sa(t_pile *data);
 int ra(t_pile *data);
 int rra(t_pile *data);
+int rb(t_pile *data);
+int sb(t_pile *data);	
+int rrb(t_pile *data);
+int pa(t_pile *data);
+int pb(t_pile *data);
+int printall(t_pile *data);
+
 
 #endif
