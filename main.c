@@ -6,21 +6,20 @@ int check_double(t_pile *data, int k)
     int c;
 
     i = 0;
-    while (i != k - 2)
+    while (data->tab[i])
     {
         c = i + 1;
-        while (c != k)
+        while (data->tab[c])
         {
-            if (data->pileA[i] == data->pileA[c])
+            if (data->tab[i] == data->tab[c])
             {
-            //    printf("Error");
+                printf("ereur de double");
                 return (0);
             }
             c++;
         }
-        i++;
     }
-    return (1);
+    return 1;
 }
 
 int	ft_atoi(const char *str)
@@ -98,7 +97,7 @@ int main(int ac, char **av)
     }
     
     tabcpy(&data);
-   // if (check_double(&data, ac) == 0)
+  //  if (check_double(&data, ac) == 0)
     //    return (0);
     
     if (alsort(&data,ac) == 1)
@@ -108,5 +107,5 @@ int main(int ac, char **av)
     i = 0;
     while (data.pos != data.end + 1)
         localisation(&data);
-    printall(&data);
+  //  printall(&data);
 }

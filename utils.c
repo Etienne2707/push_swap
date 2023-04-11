@@ -90,7 +90,6 @@ void    sort1(t_pile *data)
     while(data->pileA[data->max] != data->tab[data->pos])
     {
         ra(data);
-        printf("data Pile A = %d DATA.TAB = %d", data->pileA[0], data->tab[data->pos]);
     }
     pa(data);
 }
@@ -100,8 +99,6 @@ void    rsort1(t_pile *data)
     while(data->pileA[data->max] != data->tab[data->pos])
     {
         rra(data);
-        printf("data Pile A = %d DATA.TAB = %d", data->pileA[0], data->tab[data->pos]);
-
     }
     pa(data);
 }
