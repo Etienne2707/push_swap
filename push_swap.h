@@ -15,6 +15,7 @@ typedef	struct s_pile
 	int *pileA;
 	int *pileB;
 	int maxB;
+	int end;
 }   t_pile;
 
 int	ft_atoi(const char *str);
@@ -30,6 +31,11 @@ int rrb(t_pile *data);
 int pa(t_pile *data);
 int pb(t_pile *data);
 int printall(t_pile *data);
+int sortall(t_pile *data);
+int localisation(t_pile *data);
+void    rsort1(t_pile *data);
+void    sort1(t_pile *data);
+int tabcpy(t_pile *data);
 
 
 #endif

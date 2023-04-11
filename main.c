@@ -11,7 +11,7 @@ int check_double(t_pile *data, int k)
         c = i + 1;
         while (c != k)
         {
-            if (data->tab[i] == data->tab[c])
+            if (data->pileA[i] == data->pileA[c])
             {
             //    printf("Error");
                 return (0);
@@ -49,8 +49,10 @@ int	ft_atoi(const char *str)
 		result = result + str2[i] - '0';
 		i++;
 	}
+    //printf("%d\n", result * sign);
+
 	return (result * sign);
-}
+}    
 
 int main(int ac, char **av)
 {
@@ -62,8 +64,10 @@ int main(int ac, char **av)
     c = 0;
    
     t_pile data;
-    data.tab = malloc(sizeof(int) * ac); 
+    data.pileA = malloc(sizeof(int) * ac);  
     data.max = ac - 2;
+    data.pos = 0;
+    data.end = data.max;
     data.pileB = malloc(sizeof(int) * ac - 2);
     data.maxB = 0 ;
     if (ac <= 1)
@@ -76,26 +80,33 @@ int main(int ac, char **av)
         while (av[i][y] != '\0')
         {           
 
-            if (av[i][y] < '0' || av[i][y] > '9')
+            if ((av[i][y] >= '0' && av[i][y] <= '9') || av[i][0] == '-')
             {
-                printf("Error");
-                return (0);
+                if (av[i][0] == '-')
+                {
+                    if (av[i][1] < '0' || av[i][1] > '9')
+                        return 0;
+                }
             }
+            else 
+                return 0;
             y++;        
         }
-        data.tab[c] = ft_atoi(av[i]);
+        data.pileA[c] = ft_atoi(av[i]);
         c++;
         i++;
     }
-    if (check_double(&data, ac) == 0)
-        return (0);
+    
+    tabcpy(&data);
+   // if (check_double(&data, ac) == 0)
+    //    return (0);
+    
     if (alsort(&data,ac) == 1)
         return(1);
-  //  printall(&data);
-    pa(&data);
-    pa(&data);
-    pa(&data);
-    rrb(&data);
-    pb(&data);
+    
+    sortall(&data);
+    i = 0;
+    while (data.pos != data.end + 1)
+        localisation(&data);
     printall(&data);
 }

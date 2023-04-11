@@ -4,11 +4,11 @@ int sa(t_pile *data)
 {
     int c;
 
-    printf("data max : %d data max - 1 : %d \n", data->tab[data->max], data->tab[data->max - 1]);
-    c = data->tab[data->max];
-    data->tab[data->max] = data->tab[data->max - 1];
-    data->tab[data->max - 1] = c;
-    printf("data max : %d data max - 1 : %d \n", data->tab[data->max], data->tab[data->max - 1]);
+    printf("data max : %d data max - 1 : %d \n", data->pileA[data->max], data->pileA[data->max - 1]);
+    c = data->pileA[data->max];
+    data->pileA[data->max] = data->pileA[data->max - 1];
+    data->pileA[data->max - 1] = c;
+    printf("data max : %d data max - 1 : %d \n", data->pileA[data->max], data->pileA[data->max - 1]);
 }
 
 int sb(t_pile *data)
@@ -17,7 +17,7 @@ int sb(t_pile *data)
 
     printf("data max : %d data max - 1 : %d \n", data->pileB[data->max], data->pileB[data->max - 1]);
     c = data->pileB[data->max];
-    data->pileB[data->max] = data->tab[data->max - 1];
+    data->pileB[data->max] = data->pileA[data->max - 1];
     data->pileB[data->max - 1] = c;
     printf("data max : %d data max - 1 : %d \n", data->pileB[data->max], data->pileB[data->max - 1]);
 }
@@ -28,13 +28,13 @@ int ra(t_pile *data)
     int c;
     int k;
 
-    c = data->tab[0];
-    data->tab[0] = data->tab[data->max];
+    c = data->pileA[0];
+    data->pileA[0] = data->pileA[data->max];
     i = 1;
     while (i <= data->max)
     {
-        k = data->tab[i];
-        data->tab[i] = c;
+        k = data->pileA[i];
+        data->pileA[i] = c;
         c = k;
         i++;
     }
@@ -66,14 +66,14 @@ int rra(t_pile *data)
     int c;
     int k;
 
-    c = data->tab[data->max];
-    data->tab[data->max] = data->tab[0];
+    c = data->pileA[data->max];
+    data->pileA[data->max] = data->pileA[0];
     i = data->max - 1;
-   // printf("%d    %d", data->tab[data->max], data->tab[0]);
+   // printf("%d    %d", data->pileA[data->max], data->pileA[0]);
     while (i >= 0)
     {
-        k = data->tab[i];
-        data->tab[i] = c;
+        k = data->pileA[i];
+        data->pileA[i] = c;
         c = k;
         i--;
     }
@@ -104,9 +104,9 @@ int pa(t_pile *data)
 
     int c;
 
-    c = data->tab[data->max];
+    c = data->pileA[data->max];
     data->pileB[data->maxB] = c;
-    data->tab[data->max] = 0;
+    data->pileA[data->max] = 0;
     if (data->max != 0)
         data->max -= 1;
     data->maxB += 1;
@@ -117,7 +117,7 @@ int pb(t_pile *data)
     int c ;
 
     c = data->pileB[data->maxB - 1];
-    data->tab[data->max] = c;
+    data->pileA[data->max] = c;
     data->pileB[data->maxB - 1];
     if (data->maxB != 0)
         data->maxB -= 1;
